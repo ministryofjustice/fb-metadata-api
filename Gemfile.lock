@@ -70,7 +70,7 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    fb-jwt-auth (0.2.1)
+    fb-jwt-auth (0.2.2)
       activesupport
       json
       jwt
@@ -173,7 +173,7 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.1)
 
 PLATFORMS
   ruby
@@ -183,7 +183,7 @@ DEPENDENCIES
   brakeman
   byebug
   factory_bot_rails
-  fb-jwt-auth (~> 0.2.1)
+  fb-jwt-auth (~> 0.2.2)
   pg (>= 0.18, < 2.0)
   puma (~> 5.0)
   rails (~> 6.0.2, >= 6.0.2.1)
