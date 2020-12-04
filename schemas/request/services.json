@@ -29,7 +29,7 @@
         "pages": {
           "type": "array",
           "items": {
-            "type": "object"
+            "$ref": "definition.page"
           }
         }
       },
