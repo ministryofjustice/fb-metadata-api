@@ -5,7 +5,7 @@ ruby '2.7.2'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fb-jwt-auth', '~> 0.5.0'
-gem 'metadata_presenter', '~> 0.13.3'
+gem 'metadata_presenter', '~> 0.13.4'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 5.2'
 gem 'rails', '~> 6.1.2'
