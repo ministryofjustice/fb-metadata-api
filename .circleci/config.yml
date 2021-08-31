@@ -112,7 +112,7 @@ jobs:
       PGPASSWORD: password
       PGUSER: postgres
       RAILS_ENV: test
-    parallelism: 3
+    parallelism: 4
     steps:
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
@@ -136,8 +136,17 @@ jobs:
             bundle exec rails db:setup
             bundle exec rails db:migrate
 
-            TESTFILES=$(circleci tests glob "project/fb-editor/acceptance/**/*_spec.rb" | circleci tests split --split-by=name)
-            bundle exec rspec acceptance $TESTFILES --profile 10 -f doc
+            TESTFILES=$(circleci tests glob "acceptance/**/*_spec.rb" | circleci tests split --split-by=timings --timings-type=filename)
+            echo '***********'
+            echo $TESTFILES
+            echo '***********'
+
+            bundle exec rspec --format progress \
+              --format RspecJunitFormatter \
+              --out ~/acceptance/acceptance.xml \
+              $TESTFILES
+      - store_test_results:
+          path: ~/acceptance
       - slack/status: *slack_status
 
 workflows:
