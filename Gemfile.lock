@@ -145,7 +145,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
-    metadata_presenter (2.7.2)
+    metadata_presenter (2.8.0)
       govuk_design_system_formbuilder (>= 2.1.5)
       json-schema (>= 2.8.1)
       kramdown (>= 2.3.0)
@@ -172,7 +172,7 @@ GEM
     public_suffix (4.0.6)
     puma (5.5.2)
       nio4r (~> 2.0)
-    racc (1.5.2)
+    racc (1.6.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -286,7 +286,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
@@ -300,7 +300,7 @@ DEPENDENCIES
   fb-jwt-auth (~> 0.7.0)
   httparty
   kaminari
-  metadata_presenter (~> 2.7.2)
+  metadata_presenter (~> 2.8.0)
   pg (>= 0.18, < 2.0)
   prometheus-client (~> 2.1.0)
   puma (~> 5.5)
