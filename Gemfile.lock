@@ -127,7 +127,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
-    metadata_presenter (2.17.8)
+    metadata_presenter (2.17.9)
       govuk_design_system_formbuilder (>= 2.1.5)
       json-schema (= 2.8.1)
       kramdown (>= 2.3.0)
@@ -255,7 +255,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     thor (1.2.1)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2022.1)
       tzinfo (>= 1.0.0)
@@ -277,7 +277,7 @@ DEPENDENCIES
   fb-jwt-auth (~> 0.8.0)
   httparty
   kaminari
-  metadata_presenter (~> 2.17.8)
+  metadata_presenter (~> 2.17.9)
   pg (>= 0.18, < 2.0)
   prometheus-client (~> 2.1.0)
   puma (~> 5.6)
