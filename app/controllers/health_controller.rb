@@ -4,8 +4,6 @@ class HealthController < ActionController::API
   end
 
   def readiness
-    if ActiveRecord::Base.connection && ActiveRecord::Base.connected?
-      render plain: 'ready'
-    end
+    render plain: 'ready'
   end
 end
