@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.7'
 
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'fb-jwt-auth', '~> 0.8.0'
+gem 'fb-jwt-auth', '~> 0.10.0'
 gem 'kaminari'
 gem 'metadata_presenter', '~> 2.17.35'
 gem 'pg', '>= 0.18', '< 2.0'

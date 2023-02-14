@@ -82,7 +82,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    fb-jwt-auth (0.8.0)
+    fb-jwt-auth (0.10.0)
       activesupport
       json
       jwt
@@ -101,10 +101,10 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
-    json (2.6.1)
+    json (2.6.3)
     json-schema (2.8.1)
       addressable (>= 2.4)
-    jwt (2.3.0)
+    jwt (2.7.0)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -273,7 +273,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   ruby
@@ -284,7 +284,7 @@ DEPENDENCIES
   byebug
   database_cleaner-active_record
   factory_bot_rails
-  fb-jwt-auth (~> 0.8.0)
+  fb-jwt-auth (~> 0.10.0)
   httparty
   kaminari
   metadata_presenter (~> 2.17.35)
