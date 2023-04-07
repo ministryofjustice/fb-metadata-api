@@ -60,7 +60,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.8.1)
+    addressable (2.8.3)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     bootsnap (1.16.0)
@@ -122,7 +122,7 @@ GEM
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.19.1)
+    loofah (2.20.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.1)
@@ -131,7 +131,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
-    metadata_presenter (2.17.45)
+    metadata_presenter (2.18)
       govuk_design_system_formbuilder (>= 2.1.5)
       json-schema (= 2.8.1)
       kramdown (>= 2.3.0)
@@ -151,7 +151,7 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
@@ -287,7 +287,7 @@ DEPENDENCIES
   fb-jwt-auth (~> 0.10.0)
   httparty
   kaminari
-  metadata_presenter (~> 2.17.45)
+  metadata_presenter (~> 2.18)
   pg (>= 0.18, < 2.0)
   prometheus-client (~> 2.1.0)
   puma (~> 6.1)
