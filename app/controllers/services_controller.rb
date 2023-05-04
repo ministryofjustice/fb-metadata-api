@@ -36,6 +36,15 @@ class ServicesController < MetadataController
     end
   end
 
+  def destroy
+    Service.find(service.id).destroy
+
+    render(
+      json: { message: "Service #{service.name} has been deleted." },
+      status: :ok
+    )
+  end
+
   def services_for_user
     services = Service.where(created_by: params[:user_id]).order(name: :asc)
 

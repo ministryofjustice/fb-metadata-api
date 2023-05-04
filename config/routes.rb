@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get '/health', to: 'health#show' # used for liveness probe
   get '/readiness', to: 'health#readiness'
 
-  resources :services, only: [:index, :create] do
+  resources :services, only: [:index, :create, :destroy] do
     get '/users/:user_id', to: 'services#services_for_user', on: :collection
     resources :versions, only: [:index, :create, :show] do
       get :latest, on: :collection
