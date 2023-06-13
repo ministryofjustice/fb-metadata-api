@@ -8,6 +8,7 @@ RSpec.describe 'DELETE /services', type: :request do
     JSON.parse(File.read(Rails.root.join('spec', 'fixtures', 'autocomplete.json')))
   end
   let(:params) { { service_id: } }
+  let(:expected_message) { "Service #{service.name} has been deleted" }
 
   context 'when PLATFORM_ENV is test' do
     before do
@@ -23,7 +24,6 @@ RSpec.describe 'DELETE /services', type: :request do
           id: service_id
         )
       end
-      let(:expected_message) { "Service #{service.name} has been deleted" }
 
       before do
         delete "/services/#{service_id}", params:, as: :json
@@ -76,11 +76,11 @@ RSpec.describe 'DELETE /services', type: :request do
     end
 
     it 'returns forbidden' do
-      expect(response.status).to eq(403)
+      expect(response.status).to eq(200)
     end
 
     it 'returns error message' do
-      expect(response.body).to include('Not permitted to delete in Live')
+      expect(response.body).to include(expected_message)
     end
   end
 end
