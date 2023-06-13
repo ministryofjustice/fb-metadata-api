@@ -37,14 +37,14 @@ class ServicesController < MetadataController
   end
 
   def destroy
-    if ENV['PLATFORM_ENV'] == 'test'
-      Service.find(service.id).destroy!
-
+    if service.destroy!
+      Rails.logger.info("Service #{service.name} has been deleted")
       render(
         json: { message: "Service #{service.name} has been deleted." },
         status: :ok
       )
     else
+      Rails.logger.debug("Cannot delete service, #{service.name}")
       render(
         json: { message: 'Not permitted to delete in Live' },
         status: :forbidden
