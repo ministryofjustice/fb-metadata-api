@@ -400,7 +400,7 @@ GEM
       ast (~> 2.4.1)
     pg (1.5.3)
     plek (5.0.0)
-    prometheus-client (2.1.0)
+    prometheus-client (4.1.0)
     prometheus_exporter (2.0.8)
       webrick
     public_suffix (5.0.1)
@@ -555,7 +555,7 @@ DEPENDENCIES
   kaminari
   metadata_presenter (~> 3.0)
   pg (>= 0.18, < 2.0)
-  prometheus-client (~> 2.1.0)
+  prometheus-client (~> 4.1.0)
   puma (~> 6.1)
   rails (~> 7.0.0)
   rspec-rails
