@@ -95,7 +95,7 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
-    google-protobuf (3.23.3)
+    google-protobuf (3.23.4)
     googleapis-common-protos-types (1.6.0)
       google-protobuf (~> 3.14)
     govspeak (7.1.1)
@@ -108,7 +108,7 @@ GEM
       nokogiri (~> 1.12)
       rinku (~> 2.0)
       sanitize (~> 6)
-    govuk_app_config (8.1.0)
+    govuk_app_config (9.0.1)
       logstasher (~> 2.1)
       opentelemetry-exporter-otlp (~> 0.25.0)
       opentelemetry-instrumentation-all (~> 0.39.1)
@@ -128,7 +128,7 @@ GEM
     govuk_personalisation (0.13.0)
       plek (>= 1.9.0)
       rails (>= 6, < 8)
-    govuk_publishing_components (35.9.0)
+    govuk_publishing_components (35.10.0)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
@@ -177,7 +177,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
-    metadata_presenter (3.0.11)
+    metadata_presenter (3.0.12)
       govspeak (~> 7.1)
       govuk_design_system_formbuilder (>= 2.1.5)
       json-schema (= 2.8.1)
@@ -202,7 +202,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.2)
+    nokogiri (1.15.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     opentelemetry-api (1.1.0)
@@ -498,7 +498,7 @@ GEM
       rubocop (~> 1.31)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
-    sanitize (6.0.1)
+    sanitize (6.0.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     sassc (2.4.0)
