@@ -6,7 +6,9 @@ ruby '3.1.3'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fb-jwt-auth', '~> 0.10.0'
 gem 'kaminari'
-gem 'metadata_presenter', '~> 3.0'
+gem 'metadata_presenter',
+    github: 'ministryofjustice/fb-metadata-presenter',
+    branch: 'body-property'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'prometheus-client', '~> 2.1.0'
 gem 'puma', '~> 6.3'
