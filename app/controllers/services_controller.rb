@@ -42,6 +42,13 @@ class ServicesController < MetadataController
     render json: ServicesSerializer.new(services).attributes, status: :ok
   end
 
+  def destroy
+    service_id = params[:id]
+    Rails.logger.info("Deleting service #{service_id}")
+    service = Service.where(id: service_id)
+    service.destroy_all
+  end
+
   private
 
   def page
