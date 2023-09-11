@@ -554,6 +554,22 @@ RSpec.describe 'API integration tests' do
         )
       end
     end
+
+    context 'when deleting a service' do
+      before do
+        response = metadata_api_test_client.create_service(
+          body: { "metadata": service }.to_json,
+          authorisation_headers:
+        )
+        metadata = parse_response(response)
+        @service_id = metadata[:service_id]
+      end
+
+      it 'returns 204' do
+        response = metadata_api_test_client.delete_service(@service_id, authorisation_headers:)
+        expect(response.code).to be(204)
+      end
+    end
   end
 
   context 'when not passing authorisation token' do

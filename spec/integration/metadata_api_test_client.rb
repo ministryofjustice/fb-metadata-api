@@ -77,4 +77,8 @@ class MetadataApiTestClient
       }
     )
   end
+
+  def delete_service(service_id, authorisation_headers:)
+    self.class.delete("/services/#{service_id}", headers: headers.merge(authorisation_headers))
+  end
 end
