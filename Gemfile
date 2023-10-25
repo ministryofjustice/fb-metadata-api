@@ -6,7 +6,7 @@ ruby '3.1.3'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fb-jwt-auth', '~> 0.10.0'
 gem 'kaminari'
-gem 'metadata_presenter', '~> 3.2.10'
+gem 'metadata_presenter', '~> 3.2.11'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'prometheus-client', '~> 4.2.1'
 gem 'puma', '~> 6.4'
