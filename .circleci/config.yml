@@ -227,6 +227,7 @@ workflows:
             branches:
               only:
                 - main
+                - bump-metadata-presenter
       - deploy_to_test_eks:
           context: *context
           requires:
@@ -239,3 +240,7 @@ workflows:
           context: *context
           requires:
             - editor_acceptance_tests_eks
+          filters:
+            branches:
+              only:
+                - main
