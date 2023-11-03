@@ -227,7 +227,6 @@ workflows:
             branches:
               only:
                 - main
-                - bump-metadata-presenter
       - deploy_to_test_eks:
           context: *context
           requires:
