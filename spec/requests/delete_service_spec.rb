@@ -1,0 +1,49 @@
+RSpec.describe 'Deletion Service', type: :request do
+  include_examples 'application authentication' do
+    let(:action) do
+      delete service_path(service_id)
+    end
+  end
+
+  let!(:service) do
+    create(
+      :service,
+      id: service_id,
+      name: 'Best Service',
+      created_by: 'Servicer',
+      metadata: [build(:metadata, created_by: 'Servicer')]
+    )
+  end
+
+  let(:response_body) { JSON.parse(response.body) }
+  let(:service_id) { SecureRandom.uuid }
+
+  before do
+    allow_any_instance_of(Fb::Jwt::Auth).to receive(:verify!).and_return(true)
+  end
+
+  describe 'GET /services' do
+    it 'returns http success' do
+      get '/services', as: :json
+      expect(response.status).to eq(200)
+      expect(Service.exists?(response_body['services'][0]['service_id'])).to be_truthy
+    end
+  end
+
+  describe 'DESTROY /services/:service_id' do
+    context 'when valid attributes' do
+      before do
+        expect(Service.exists?(service_id)).to be_truthy
+        delete service_path(service_id)
+      end
+
+      it 'returns OK status' do
+        expect(response.status).to be(204)
+      end
+
+      it 'Service cannot be found anymore' do
+        expect(Service.exists?(service_id)).to be_falsey
+      end
+    end
+  end
+end
