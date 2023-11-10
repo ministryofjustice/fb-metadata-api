@@ -44,6 +44,7 @@ class ServicesController < MetadataController
 
   def destroy
     Service.find(params[:id]).destroy
+    head :ok
   end
 
   private

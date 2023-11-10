@@ -38,7 +38,7 @@ RSpec.describe 'Deletion Service', type: :request do
       end
 
       it 'returns OK status' do
-        expect(response.status).to be(204)
+        expect(response.status).to be(200)
       end
 
       it 'Service cannot be found anymore' do

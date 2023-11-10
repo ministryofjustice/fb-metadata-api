@@ -565,9 +565,9 @@ RSpec.describe 'API integration tests' do
         @service_id = metadata[:service_id]
       end
 
-      it 'returns 204' do
+      it 'returns 200' do
         response = metadata_api_test_client.delete_service(@service_id, authorisation_headers:)
-        expect(response.code).to be(204)
+        expect(response.code).to be(200)
       end
     end
   end
