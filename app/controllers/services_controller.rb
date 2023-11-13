@@ -43,8 +43,11 @@ class ServicesController < MetadataController
   end
 
   def destroy
-    Service.find(params[:id]).destroy!
-    head :ok
+    if Service.find(params[:id]).destroy.nil?
+      head :bad_request
+    else
+      head :ok
+    end
   end
 
   private
