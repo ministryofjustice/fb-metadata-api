@@ -43,7 +43,8 @@ class ServicesController < MetadataController
   end
 
   def destroy
-    if Service.find(params[:id]).destroy.nil?
+    service_id = params[:id]
+    if Service.find(service_id).destroy!.nil? && Metadata.where(service_id:).destroy_all.nil?
       head :bad_request
     else
       head :ok
