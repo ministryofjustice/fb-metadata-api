@@ -34,6 +34,7 @@ RSpec.describe 'Deletion Service', type: :request do
     context 'when valid attributes' do
       before do
         expect(Service.exists?(service_id)).to be_truthy
+        expect(Metadata.where(service_id:).exists?).to be_truthy
         delete service_path(service_id)
       end
 
@@ -43,6 +44,10 @@ RSpec.describe 'Deletion Service', type: :request do
 
       it 'Service cannot be found anymore' do
         expect(Service.exists?(service_id)).to be_falsey
+      end
+
+      it 'There is no metadata associated to it anymore' do
+        expect(Metadata.where(service_id:).exists?).to be_falsey
       end
     end
   end
