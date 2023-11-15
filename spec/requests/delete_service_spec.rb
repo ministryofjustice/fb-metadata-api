@@ -38,7 +38,7 @@ RSpec.describe 'Deletion Service', type: :request do
         delete service_path(service_id)
       end
 
-      it 'returns OK status' do
+      it 'returns OK 200 status' do
         expect(response.status).to be(200)
       end
 
@@ -48,6 +48,17 @@ RSpec.describe 'Deletion Service', type: :request do
 
       it 'There is no metadata associated to it anymore' do
         expect(Metadata.where(service_id:).exists?).to be_falsey
+      end
+    end
+
+    context 'if service does not exists anymore, attributes are invalid' do
+      before do
+        delete service_path(service_id)
+        delete service_path(service_id)
+      end
+
+      it 'returns bad request 400 status' do
+        expect(response.status).to be(400)
       end
     end
   end
