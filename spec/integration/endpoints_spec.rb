@@ -317,7 +317,7 @@ RSpec.describe 'API integration tests' do
 
           @metadata = parse_response(response)
 
-          Timecop.freeze(Time.zone.now - 1.day) do
+          travel_to(1.day.ago) do
             updated_payload = { "metadata": version.merge(service_id: @metadata[:service_id]) }
 
             metadata_api_test_client.new_version(
