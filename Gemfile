@@ -9,7 +9,7 @@ ruby '3.1.3'
 #     github: 'ministryofjustice/fb-metadata-presenter',
 #     branch: 'bump-json-schema'
 # gem 'metadata_presenter', path: '../fb-metadata-presenter'
-gem 'metadata_presenter', '3.3.0'
+gem 'metadata_presenter', '3.3.4'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fb-jwt-auth', '~> 0.10.0'
@@ -18,8 +18,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'prometheus-client', '~> 4.2.1'
 gem 'puma', '~> 6.4'
 gem 'rails', '~> 7.0.6'
-gem 'sentry-rails', '~> 5.12.0'
-gem 'sentry-ruby', '~> 5.12.0'
+gem 'sentry-rails', '~> 5.14'
+gem 'sentry-ruby', '~> 5.14'
 gem 'tzinfo-data'
 
 group :development, :test do
@@ -29,7 +29,6 @@ group :development, :test do
   gem 'httparty'
   gem 'rspec_junit_formatter'
   gem 'rspec-rails'
-  gem 'timecop'
 end
 
 group :development do
