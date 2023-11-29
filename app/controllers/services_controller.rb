@@ -48,7 +48,6 @@ class ServicesController < MetadataController
       head :bad_request
     else
       Service.find(service_id).destroy!
-      Metadata.where(service_id:).destroy_all
       head :ok
     end
   end
