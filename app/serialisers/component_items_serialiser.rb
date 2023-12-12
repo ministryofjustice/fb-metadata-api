@@ -9,7 +9,7 @@ class ComponentItemsSerialiser
   def attributes
     {
       service_id:,
-      autocomplete_ids: items.map(&:id),
+      # autocomplete_ids: items.map(&:id),
       items: all_items
     }
   end
