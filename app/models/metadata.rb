@@ -29,6 +29,6 @@ class Metadata < ApplicationRecord
   end
 
   def grid
-    MetadataPresenter::Grid.new(MetadataPresenter::Service.new(data))
+    @grid ||= MetadataPresenter::Grid.new(MetadataPresenter::Service.new(data))
   end
 end
