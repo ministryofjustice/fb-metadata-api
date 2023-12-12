@@ -59,7 +59,7 @@ RSpec.describe ComponentItemsSerialiser do
       expect(serialiser.attributes).to eq(
         {
           service_id: service.id,
-          # autocomplete_ids: [items_one.id, items_two.id],
+          autocomplete_ids: [items_one.id, items_two.id],
           items: {
             '2f132e68-0e3b-48ed-a5ad-61f21fcb3d22' => [
               { 'text' => 'ragdoll', 'value' => '1' },

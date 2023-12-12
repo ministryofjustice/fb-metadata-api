@@ -19,16 +19,10 @@ class Metadata < ApplicationRecord
   end
 
   def all_components
-    MetadataPresenter::Service.new(data).pages.map(&:components).flatten
+    all_pages.map(&:components).flatten
   end
 
-  # def all_pages
-  #   grid.page_uuids.map do |uuid|
-  #     grid.service.find_page_by_uuid(uuid)
-  #   end
-  # end
-
-  # def grid
-  #   @grid ||= MetadataPresenter::Grid.new(MetadataPresenter::Service.new(data))
-  # end
+  def all_pages
+    @all_pages ||= MetadataPresenter::Service.new(data).pages
+  end
 end

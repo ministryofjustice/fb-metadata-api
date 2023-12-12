@@ -128,11 +128,11 @@ RSpec.describe 'GET /services/:service_id/items/all' do
       )
     end
 
-    # it 'returns all expected autocomplete ids' do
-    #   expect(response_body['autocomplete_ids']).to eq(
-    #     [updated_items_one.id, items_two.id]
-    #   )
-    # end
+    it 'returns all expected autocomplete ids' do
+      expect(response_body['autocomplete_ids']).to eq(
+        [updated_items_one.id, items_two.id]
+      )
+    end
   end
 
   context 'when service does not exist' do
