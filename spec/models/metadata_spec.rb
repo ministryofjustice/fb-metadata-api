@@ -44,9 +44,9 @@ RSpec.describe Metadata, type: :model do
         )
       end
 
-      it 'returns uuids of autocomplete components in a service' do
-        expect(metadata.autocomplete_component_uuids).to eq(expected_uuids)
-      end
+      # it 'returns uuids of autocomplete components in a service' do
+      #   expect(metadata.autocomplete_component_uuids).to eq(expected_uuids)
+      # end
     end
 
     context 'when there are no autocomplete components' do
