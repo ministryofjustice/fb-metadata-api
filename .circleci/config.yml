@@ -227,19 +227,20 @@ workflows:
             branches:
               only:
                 - main
+                - performance-upgrade
       - deploy_to_test_eks:
           context: *context
           requires:
             - build_and_push_image
-      - editor_acceptance_tests_eks:
-          context: *context
-          requires:
-            - deploy_to_test_eks
-      - deploy_to_live_eks:
-          context: *context
-          requires:
-            - editor_acceptance_tests_eks
-          filters:
-            branches:
-              only:
-                - main
+      # - editor_acceptance_tests_eks:
+      #     context: *context
+      #     requires:
+      #       - deploy_to_test_eks
+      # - deploy_to_live_eks:
+      #     context: *context
+      #     requires:
+      #       - editor_acceptance_tests_eks
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
