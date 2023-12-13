@@ -21,12 +21,15 @@ RSpec.describe Metadata, type: :model do
   let(:component_id_three) do
     autocomplete_service.find_page_by_url('ice-cream').components.first.uuid
   end
+  let(:detached_page_component_id) do
+    autocomplete_service.find_page_by_url('pizzas').components.first.uuid
+  end
 
   describe '#autocomplete_component_uuids' do
     let(:service) { create(:service, id: service_id) }
 
     context 'when there are autocomplete components' do
-      let(:expected_uuids) { [component_id_one, component_id_two, component_id_three] }
+      let(:expected_uuids) { [component_id_one, component_id_two, component_id_three, detached_page_component_id] }
 
       before do
         create(:metadata, service:, data: service_metadata)
@@ -44,7 +47,7 @@ RSpec.describe Metadata, type: :model do
         )
       end
 
-      it 'returns uuids of autocomplete components in a service' do
+      it 'returns uuids of autocomplete components in a service - including detached pages' do
         expect(metadata.autocomplete_component_uuids).to eq(expected_uuids)
       end
     end

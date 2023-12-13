@@ -23,12 +23,6 @@ class Metadata < ApplicationRecord
   end
 
   def all_pages
-    grid.page_uuids.map do |uuid|
-      grid.service.find_page_by_uuid(uuid)
-    end
-  end
-
-  def grid
-    MetadataPresenter::Grid.new(MetadataPresenter::Service.new(data))
+    @all_pages ||= MetadataPresenter::Service.new(data).pages
   end
 end
