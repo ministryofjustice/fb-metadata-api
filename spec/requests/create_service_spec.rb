@@ -64,6 +64,22 @@ RSpec.describe 'POST /services', type: :request do
     end
   end
 
+  context 'when empty attributes' do
+    let(:params) { { metadata: {} } }
+
+    it 'returns unprocessable entity' do
+      expect(response.status).to be(422)
+    end
+
+    it 'returns error message' do
+      expect(
+        response_body['message']
+      ).to match_array(
+        ["The property '#/' did not contain a required property of 'metadata'"]
+      )
+    end
+  end
+
   context 'when form name already exists' do
     let(:params) { { metadata: service } }
     before do

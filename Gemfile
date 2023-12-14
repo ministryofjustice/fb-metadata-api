@@ -29,6 +29,8 @@ group :development, :test do
   gem 'httparty'
   gem 'rspec_junit_formatter'
   gem 'rspec-rails'
+  gem 'simplecov'
+  gem 'simplecov-console', require: false
 end
 
 group :development do
