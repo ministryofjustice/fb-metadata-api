@@ -60,7 +60,7 @@ RSpec.describe 'GET /services/:service_id/components/:component_id/items' do
         {
           component_id_one => [
             { 'text' => 'demogorgon', 'value' => '100' },
-            { 'text' => 'mind flayer', 'value' => '200' },
+            { 'text' => 'mind flayer', 'value' => '200' }
           ]
         }
       )
@@ -75,7 +75,7 @@ RSpec.describe 'GET /services/:service_id/components/:component_id/items' do
     it 'returns not found response' do
       expect(response.status).to be(404)
     end
-    
+
     it 'includes an error message' do
       expect(response_body['message']).to include(/#{component_id_one}/)
     end
