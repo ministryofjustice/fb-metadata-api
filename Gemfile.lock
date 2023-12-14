@@ -181,7 +181,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
-    metadata_presenter (3.3.5)
+    metadata_presenter (3.3.7)
       govspeak (~> 7.1)
       govuk_design_system_formbuilder (>= 2.1.5)
       json-schema (~> 4.1.1)
@@ -580,7 +580,7 @@ DEPENDENCIES
   fb-jwt-auth (~> 0.10.0)
   httparty
   kaminari
-  metadata_presenter (= 3.3.5)
+  metadata_presenter (= 3.3.7)
   pg (>= 0.18, < 2.0)
   prometheus-client (~> 4.2.1)
   puma (~> 6.4)
