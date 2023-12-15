@@ -98,4 +98,23 @@ RSpec.describe 'POST /services', type: :request do
       )
     end
   end
+
+  context 'catching any other route' do
+    let(:params) { {} }
+    before do
+      post '/anything', params:, as: :json
+    end
+
+    it 'returns not found' do
+      expect(response.status).to be(404)
+    end
+
+    it 'returns an error message' do
+      expect(
+        response_body['message']
+      ).to match_array(
+        ["No route matches POST '/anything'"]
+      )
+    end
+  end
 end
