@@ -6,7 +6,7 @@ rake add_uuid_to_items
 task add_uuid_to_items: :environment do |_t, _args|
   ActiveRecord::Base.logger = Logger.new($stdout)
 
-  Service.all.each do |service|
+  Service.all.find_each do |service|
     latest_metadata = service.latest_metadata
     data = latest_metadata.try(:data)
 
