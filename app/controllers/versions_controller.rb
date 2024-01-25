@@ -40,7 +40,14 @@ class VersionsController < MetadataController
     render json: MetadataSerialiser.new(service, metadata).attributes, status: :ok
   end
 
+  private
+
+  # TODO: changing locale on the fly (with query param) is not fully implemented
   def locale
-    @locale ||= params[:locale] || 'en'
+    @locale ||= params[:locale] || supported_locales
+  end
+
+  def supported_locales
+    %w[en cy]
   end
 end
