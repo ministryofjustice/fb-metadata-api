@@ -7,7 +7,8 @@ ruby '3.1.3'
 # one of these lines:
 gem 'metadata_presenter',
     github: 'ministryofjustice/fb-metadata-presenter',
-    branch: 'add-order-to-components'
+    ref: '1a36235d'
+# branch: 'add-order-to-components'
 # gem 'metadata_presenter', path: '../fb-metadata-presenter'
 # gem 'metadata_presenter', '3.3.9'
 
