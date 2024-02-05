@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ministryofjustice/fb-metadata-presenter.git
-  revision: 88e9491b54b0e5967f4f7b059abaffb54585407c
+  revision: 737de3768b21f4150c93995641ad8ea0d9b3e8ca
   branch: content-area-upload
   specs:
     metadata_presenter (3.3.10)
