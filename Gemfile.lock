@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ministryofjustice/fb-metadata-presenter.git
-  revision: ee8d472ebbae2edeb7f5f09f5b73dd955b7a5578
+  revision: 1e627aa5f6282d229fffcf6a77a413ffbacd91a2
   branch: content-area-upload
   specs:
     metadata_presenter (3.3.10)
@@ -217,8 +217,8 @@ GEM
     nokogiri (1.16.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    opentelemetry-api (1.2.3)
-    opentelemetry-common (0.20.0)
+    opentelemetry-api (1.2.4)
+    opentelemetry-common (0.20.1)
       opentelemetry-api (~> 1.0)
     opentelemetry-exporter-otlp (0.26.3)
       google-protobuf (~> 3.14)
