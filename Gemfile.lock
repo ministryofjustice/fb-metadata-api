@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ministryofjustice/fb-metadata-presenter.git
-  revision: ff213629739f8a4ec99331db186e067efcd5e46b
+  revision: 254ebe6b0a93ae4bf34df4da5f0b7bfa3077ad92
   branch: content-area-upload
   specs:
     metadata_presenter (3.3.12)
@@ -288,7 +288,7 @@ GEM
     opentelemetry-instrumentation-base (0.22.3)
       opentelemetry-api (~> 1.0)
       opentelemetry-registry (~> 0.1)
-    opentelemetry-instrumentation-bunny (0.21.1)
+    opentelemetry-instrumentation-bunny (0.21.2)
       opentelemetry-api (~> 1.0)
       opentelemetry-instrumentation-base (~> 0.22.1)
     opentelemetry-instrumentation-concurrent_ruby (0.21.2)
@@ -379,7 +379,7 @@ GEM
       opentelemetry-api (~> 1.0)
       opentelemetry-common (~> 0.20.0)
       opentelemetry-instrumentation-base (~> 0.22.1)
-    opentelemetry-instrumentation-resque (0.5.0)
+    opentelemetry-instrumentation-resque (0.5.1)
       opentelemetry-api (~> 1.0)
       opentelemetry-instrumentation-base (~> 0.22.1)
     opentelemetry-instrumentation-restclient (0.22.3)
@@ -389,7 +389,7 @@ GEM
     opentelemetry-instrumentation-ruby_kafka (0.21.0)
       opentelemetry-api (~> 1.0)
       opentelemetry-instrumentation-base (~> 0.22.1)
-    opentelemetry-instrumentation-sidekiq (0.25.0)
+    opentelemetry-instrumentation-sidekiq (0.25.2)
       opentelemetry-api (~> 1.0)
       opentelemetry-common (~> 0.20.0)
       opentelemetry-instrumentation-base (~> 0.22.1)
