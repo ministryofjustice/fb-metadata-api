@@ -107,6 +107,9 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker: *remote_docker
+      - attach_workspace:
+          at: .
+      - run: *workspace_envs
       - add_ssh_keys: &ssh_keys
           fingerprints:
             - d8:c6:c1:58:ff:17:32:a8:96:f2:83:a6:e7:e7:e8:38
@@ -227,6 +230,7 @@ workflows:
             branches:
               only:
                 - main
+                - deployment-fix
       - deploy_to_test_eks:
           context: *context
           requires:
@@ -235,11 +239,11 @@ workflows:
           context: *context
           requires:
             - deploy_to_test_eks
-      - deploy_to_live_eks:
-          context: *context
-          requires:
-            - editor_acceptance_tests_eks
-          filters:
-            branches:
-              only:
-                - main
+      # - deploy_to_live_eks:
+      #     context: *context
+      #     requires:
+      #       - editor_acceptance_tests_eks
+      #     filters:
+      #       branches:
+      #         only:
+      #           - main
