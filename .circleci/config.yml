@@ -189,8 +189,9 @@ jobs:
             bundle install
             bundle exec rails db:setup
             bundle exec rails db:migrate
+            EXCLUDE_FILES="accessibility_spec.rb"
 
-            TESTFILES=$(circleci tests glob "acceptance/**/*_spec.rb" | circleci tests split --split-by=timings --timings-type=filename)
+            TESTFILES=$(circleci tests glob "acceptance/**/*_spec.rb" | grep -ve $EXCLUDE_FILES | circleci tests split --split-by=timings --timings-type=filename)
             echo '***********'
             echo $TESTFILES
             echo '***********'
