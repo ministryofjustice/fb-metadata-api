@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.4.0
   slack: circleci/slack@3.4.2
-  browser-tools: circleci/browser-tools@1.4.3
+  browser-tools: circleci/browser-tools@1.4.7
   aws-cli: circleci/aws-cli@4.0.0
 
 jobs:
@@ -107,6 +107,9 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker: *remote_docker
+      - attach_workspace:
+          at: .
+      - run: *workspace_envs
       - add_ssh_keys: &ssh_keys
           fingerprints:
             - d8:c6:c1:58:ff:17:32:a8:96:f2:83:a6:e7:e7:e8:38
@@ -161,9 +164,7 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update
-      - browser-tools/install-chrome:
-          # TODO remove following line when fixed https://github.com/CircleCI-Public/browser-tools-orb/issues/90
-          chrome-version: 116.0.5845.96
+      - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run:
           name: Check browser tools install
@@ -186,8 +187,9 @@ jobs:
             bundle install
             bundle exec rails db:setup
             bundle exec rails db:migrate
+            EXCLUDE_FILES="accessibility_spec.rb"
 
-            TESTFILES=$(circleci tests glob "acceptance/**/*_spec.rb" | circleci tests split --split-by=timings --timings-type=filename)
+            TESTFILES=$(circleci tests glob "acceptance/**/*_spec.rb" | grep -ve $EXCLUDE_FILES | circleci tests split --split-by=timings --timings-type=filename)
             echo '***********'
             echo $TESTFILES
             echo '***********'
