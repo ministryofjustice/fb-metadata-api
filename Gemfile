@@ -19,7 +19,7 @@ gem 'prometheus-client', '~> 4.2.1'
 gem 'puma', '~> 6.4'
 gem 'rails', '~> 7.0.6'
 gem 'sentry-rails', '~> 5.14'
-gem 'sentry-ruby', '~> 5.14'
+gem 'sentry-ruby', '~> 5.18'
 gem 'tzinfo-data'
 
 group :development, :test do
