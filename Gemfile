@@ -18,7 +18,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'prometheus-client', '~> 4.2.1'
 gem 'puma', '~> 6.4'
 gem 'rails', '~> 7.0.6'
-gem 'sentry-rails', '~> 5.14'
+gem 'sentry-rails', '~> 5.19'
 gem 'sentry-ruby', '~> 5.14'
 gem 'tzinfo-data'
 
