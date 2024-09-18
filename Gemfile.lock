@@ -582,7 +582,7 @@ DEPENDENCIES
   kaminari
   metadata_presenter (= 3.4.2)
   pg (>= 0.18, < 2.0)
-  prometheus-client (~> 4.2.1)
+  prometheus-client (~> 4.2.3)
   puma (~> 6.4)
   rails (~> 7.0.6)
   rspec-rails
