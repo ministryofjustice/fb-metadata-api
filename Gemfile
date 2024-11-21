@@ -15,7 +15,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fb-jwt-auth', '~> 0.10.0'
 gem 'kaminari'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'prometheus-client', '~> 4.2.1'
+gem 'prometheus-client', '~> 4.2.3'
 gem 'puma', '~> 6.4'
 gem 'rails', '~> 7.0.6'
 gem 'sentry-rails', '~> 5.14'
