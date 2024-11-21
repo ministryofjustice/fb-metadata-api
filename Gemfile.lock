@@ -590,7 +590,7 @@ DEPENDENCIES
   rubocop
   rubocop-govuk
   sentry-rails (~> 5.14)
-  sentry-ruby (~> 5.14)
+  sentry-ruby (~> 5.19)
   simplecov
   simplecov-console
   spring
