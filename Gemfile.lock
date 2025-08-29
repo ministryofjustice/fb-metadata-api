@@ -625,7 +625,7 @@ DEPENDENCIES
   prometheus-client (~> 4.2.1)
   puma (~> 6.4)
   rack (= 2.2.14)
-  rails (~> 7.1, >= 7.1.5.2)
+  rails (~> 7.1.5.2)
   rspec-rails
   rspec_junit_formatter
   rubocop
