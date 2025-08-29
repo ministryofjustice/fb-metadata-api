@@ -109,7 +109,7 @@ RSpec.describe 'GET /services/:service_id/versions/latest' do
 
     it 'returns not found message' do
       expect(response_body).to eq({
-        'message' => ["Couldn't find Service with 'id'=1234-abcdef"]
+        'message' => ["Couldn't find Service with 'id'=\"1234-abcdef\""]
       })
     end
   end

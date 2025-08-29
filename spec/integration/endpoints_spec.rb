@@ -485,7 +485,7 @@ RSpec.describe 'API integration tests' do
           expect(response.code).to be(404)
           expect(
             parse_response(response)[:message]
-          ).to match_array(["Couldn't find Service with 'id'=#{service_id}"])
+          ).to match_array(["Couldn't find Service with 'id'=\"#{service_id}\""])
 
           response = metadata_api_test_client.get_version(
             service_id:,
@@ -496,7 +496,7 @@ RSpec.describe 'API integration tests' do
           expect(response.code).to be(404)
           expect(
             parse_response(response)[:message]
-          ).to match_array(["Couldn't find Service with 'id'=#{service_id}"])
+          ).to match_array(["Couldn't find Service with 'id'=\"#{service_id}\""])
         end
       end
 
