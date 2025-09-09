@@ -165,7 +165,7 @@ jobs:
       - checkout
       - run: sudo apt-get update
       - browser-tools/install-chrome:
-          chrome-version: stable
+          chrome-version: latest
       - browser-tools/install-chromedriver
       - run:
           name: Check browser tools install
