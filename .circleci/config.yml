@@ -160,7 +160,7 @@ jobs:
       PGPASSWORD: password
       PGUSER: postgres
       RAILS_ENV: test
-    parallelism: 4
+    parallelism: 7
     steps:
       - checkout
       - run: sudo apt-get update
@@ -191,16 +191,7 @@ jobs:
             bundle exec rails db:setup
             bundle exec rails db:migrate
             EXCLUDE_FILES="accessibility_spec.rb"
-
-            TESTFILES=$(circleci tests glob "acceptance/**/*_spec.rb" | grep -ve $EXCLUDE_FILES | circleci tests split --split-by=timings --timings-type=filename)
-            echo '***********'
-            echo $TESTFILES
-            echo '***********'
-
-            bundle exec rspec --format progress \
-              --format RspecJunitFormatter \
-              --out ~/acceptance/acceptance.xml \
-              $TESTFILES
+            circleci tests glob "acceptance/**/*_spec.rb" | grep -ve $EXCLUDE_FILES | circleci tests run --command="xargs bundle exec rspec --format progress --format RspecJunitFormatter -o ~/acceptance/acceptance.xml" --verbose --split-by=timings --timings-type=filename
       - store_test_results:
           path: ~/acceptance
       - slack/status: *slack_status
