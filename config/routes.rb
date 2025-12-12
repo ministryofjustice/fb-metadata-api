@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get '/components/:component_id/items', to: 'component_items#show'
     post '/components/:component_id/items/all', to: 'component_items#create'
   end
+  resources :questionnaires, only: [:index]
 
   match '*unmatched', to: 'application#not_found', via: :all
 end
