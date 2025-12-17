@@ -39,25 +39,42 @@ class ApplicationController < ActionController::API
   private
 
   def service_params
-    params.permit(:metadata)
+    params.permit(:metadata, :questionnaire)
     attributes = params[:metadata]
+    questionnaire = params[:questionnaire]
 
-    if attributes
-      {
-        name: attributes[:service_name],
-        created_by: attributes[:created_by],
-        metadata_attributes: [{
-          data: attributes,
-          created_by: attributes[:created_by],
-          locale: attributes[:locale] || 'en'
-        }]
-      }
-    else
-      {
-        name: nil,
-        created_by: nil,
-        metadata_attributes: [{}]
-      }
-    end
+    return empty_service_params unless attributes
+
+    service_obj = {
+      name: attributes[:service_name],
+      created_by: attributes[:created_by],
+      metadata_attributes: [metadata_attributes(attributes)]
+    }
+
+    service_obj.merge!(questionnaire_attributes: questionnaire_attributes(questionnaire)) if questionnaire.present?
+    service_obj
+  end
+
+  def metadata_attributes(attributes)
+    {
+      data: attributes,
+      created_by: attributes[:created_by],
+      locale: attributes[:locale] || 'en'
+    }
+  end
+
+  def questionnaire_attributes(questionnaire)
+    return {} if questionnaire.blank?
+
+    (Questionnaire.attribute_names - %w[id service_id created_at updated_at]).index_with { |key| questionnaire[key] }
+  end
+
+  def empty_service_params
+    {
+      name: nil,
+      created_by: nil,
+      metadata_attributes: [{}],
+      questionnaire_attributes: {}
+    }
   end
 end
