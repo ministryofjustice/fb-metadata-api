@@ -27,7 +27,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner-active_record'
   gem 'factory_bot_rails'
-  gem 'httparty'
+  gem 'httparty', '>= 0.24.0'
   gem 'rspec_junit_formatter'
   gem 'rspec-rails'
   gem 'simplecov'
