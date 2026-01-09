@@ -9,7 +9,7 @@ ruby '3.2.0'
 #     github: 'ministryofjustice/fb-metadata-presenter',
 #     branch: 'bump-json-schema'
 # gem 'metadata_presenter', path: '../fb-metadata-presenter'
-gem 'metadata_presenter', '3.4.11'
+gem 'metadata_presenter', '3.4.12'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fb-jwt-auth', '~> 0.10.0'
