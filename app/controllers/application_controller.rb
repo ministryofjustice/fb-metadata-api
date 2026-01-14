@@ -43,16 +43,23 @@ class ApplicationController < ActionController::API
     attributes = params[:metadata]
     questionnaire = params[:questionnaire]
 
-    return empty_service_params unless attributes
+    if attributes
+      service_obj = {
+        name: attributes[:service_name],
+        created_by: attributes[:created_by],
+        metadata_attributes: [metadata_attributes(attributes)]
+      }
 
-    service_obj = {
-      name: attributes[:service_name],
-      created_by: attributes[:created_by],
-      metadata_attributes: [metadata_attributes(attributes)]
-    }
-
-    service_obj.merge!(questionnaire_attributes: questionnaire_attributes(questionnaire)) if questionnaire.present?
-    service_obj
+      service_obj.merge!(questionnaire_attributes: questionnaire_attributes(questionnaire)) if questionnaire.present?
+      service_obj
+    else
+      {
+        name: nil,
+        created_by: nil,
+        metadata_attributes: [{}],
+        questionnaire_attributes: {}
+      }
+    end
   end
 
   def metadata_attributes(attributes)
@@ -67,14 +74,5 @@ class ApplicationController < ActionController::API
     return {} if questionnaire.blank?
 
     (Questionnaire.attribute_names - %w[id service_id created_at updated_at]).index_with { |key| questionnaire[key] }
-  end
-
-  def empty_service_params
-    {
-      name: nil,
-      created_by: nil,
-      metadata_attributes: [{}],
-      questionnaire_attributes: {}
-    }
   end
 end
