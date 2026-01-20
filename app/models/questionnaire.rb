@@ -12,10 +12,10 @@ class Questionnaire < ApplicationRecord
             presence: true
 
   validates :govuk_forms_ruled_out,
-            inclusion: { in: [true, false] }, if: -> { new_form_reason == 'building' }
+            inclusion: { in: %w[true false] }, if: -> { new_form_reason == 'building' }
 
   validates :continue_with_moj_forms,
-            inclusion: { in: [true, false] }, unless: -> { govuk_forms_ruled_out? }
+            inclusion: { in: %w[true false] }, unless: -> { govuk_forms_ruled_out? }
 
   validates :estimated_page_count,
             inclusion: { in: ESTIMATED_PAGE_COUNT_OPTIONS },
