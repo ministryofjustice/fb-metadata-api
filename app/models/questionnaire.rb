@@ -13,10 +13,10 @@ class Questionnaire < ApplicationRecord
             allow_blank: true
 
   validates :govuk_forms_ruled_out,
-            inclusion: { in: %w[true false] }, if: -> { new_form_reason == 'building' }, allow_blank: true
+            inclusion: { in: [true, false] }, if: -> { new_form_reason == 'building' }, allow_blank: true
 
   validates :continue_with_moj_forms,
-            inclusion: { in: %w[true false] }, unless: -> { govuk_forms_ruled_out? }, allow_blank: true
+            inclusion: { in: [true, false] }, unless: -> { govuk_forms_ruled_out? }, allow_blank: true
 
   validates :estimated_page_count,
             inclusion: { in: ESTIMATED_PAGE_COUNT_OPTIONS },
