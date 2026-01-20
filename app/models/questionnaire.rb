@@ -9,26 +9,27 @@ class Questionnaire < ApplicationRecord
 
   validates :new_form_reason,
             inclusion: { in: NEW_FORM_REASON_OPTIONS },
-            presence: true
+            presence: true,
+            allow_blank: true
 
   validates :govuk_forms_ruled_out,
-            inclusion: { in: %w[true false] }, if: -> { new_form_reason == 'building' }
+            inclusion: { in: %w[true false] }, if: -> { new_form_reason == 'building' }, allow_blank: true
 
   validates :continue_with_moj_forms,
-            inclusion: { in: %w[true false] }, unless: -> { govuk_forms_ruled_out? }
+            inclusion: { in: %w[true false] }, unless: -> { govuk_forms_ruled_out? }, allow_blank: true
 
   validates :estimated_page_count,
             inclusion: { in: ESTIMATED_PAGE_COUNT_OPTIONS },
-            presence: true, if: -> { continue_with_moj_forms? }
+            presence: true, if: -> { continue_with_moj_forms? }, allow_blank: true
 
   validates :estimated_first_year_submissions_count,
             inclusion: { in: ESTIMATED_FIRST_YEAR_SUBMISSIONS_COUNT_OPTIONS },
-            presence: true, if: -> { continue_with_moj_forms? }
+            presence: true, if: -> { continue_with_moj_forms? }, allow_blank: true
 
   validates :submission_delivery_method,
             inclusion: { in: SUBMISSION_DELIVERY_METHOD_OPTIONS },
-            presence: true, if: -> { continue_with_moj_forms? }
+            presence: true, if: -> { continue_with_moj_forms? }, allow_blank: true
 
   validates :required_moj_forms_features,
-            inclusion: { in: REQUIRED_MOJ_FORMS_FEATURE_OPTIONS }
+            inclusion: { in: REQUIRED_MOJ_FORMS_FEATURE_OPTIONS }, allow_blank: true
 end
