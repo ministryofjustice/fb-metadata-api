@@ -1,6 +1,7 @@
 class CreateQuestionnaires < ActiveRecord::Migration[7.2]
   def change
-    create_table :questionnaires do |t|
+    enable_extension 'pgcrypto'
+    create_table :questionnaires, id: :uuid, default: 'gen_random_uuid()' do |t|
       t.string :new_form_reason, null: false
       t.boolean :govuk_forms_ruled_out
       t.jsonb :required_moj_forms_features

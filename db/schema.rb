@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_15_180114) do
     t.index ["service_id"], name: "index_metadata_on_service_id"
   end
 
-  create_table "questionnaires", force: :cascade do |t|
+  create_table "questionnaires", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "new_form_reason", null: false
     t.boolean "govuk_forms_ruled_out"
     t.jsonb "required_moj_forms_features"
