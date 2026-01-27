@@ -11,16 +11,16 @@ build:
 
 .PHONY: spec
 spec: setup
-	$(DOCKER_COMPOSE) run --rm  metadata-app bundle exec rspec
+	$(DOCKER_COMPOSE) run --rm  metadata-app env RAILS_ENV=test bundle exec rspec
 
 .PHONY: all_units
 all_units: build
-	$(DOCKER_COMPOSE) run --rm metadata-app bundle exec rspec --exclude-pattern spec/integration/*_spec.rb
+	$(DOCKER_COMPOSE) run --rm metadata-app env RAILS_ENV=test bundle exec rspec --exclude-pattern spec/integration/*_spec.rb
 
 .PHONY: unit
 unit: build
   # change to what is required
-	$(DOCKER_COMPOSE) run --rm metadata-app bundle exec rspec spec/requests/get_services_spec.rb
+	$(DOCKER_COMPOSE) run --rm metadata-app env RAILS_ENV=test bundle exec rspec spec/requests/get_services_spec.rb
 
 .PHONY: seed_public_key
 seed_public_key:
@@ -29,7 +29,7 @@ seed_public_key:
 
 .PHONY: integration
 integration: setup
-	$(DOCKER_COMPOSE) run --rm metadata-app bundle exec rspec spec/integration/*_spec.rb
+	$(DOCKER_COMPOSE) run --rm metadata-app env RAILS_ENV=test bundle exec rspec spec/integration/*_spec.rb
 
 .PHONY: load-test-local
 load-test-local: setup
