@@ -20,7 +20,7 @@ services:
       - 8080:3000
     environment:
       DATABASE_URL: "postgres://postgres:password@metadata-db/metadata_local"
-      RAILS_ENV: test
+      RAILS_ENV: development
       SERVICE_TOKEN_CACHE_ROOT_URL: 'http://metadata-app-service-token-cache-app:3000'
       MAX_IAT_SKEW_SECONDS: '60'
     links:
@@ -33,7 +33,7 @@ services:
       context: https://github.com/ministryofjustice/fb-service-token-cache.git#main
     environment:
       SENTRY_DSN: sentry-dsn
-      RAILS_ENV: test
+      RAILS_ENV: development
       RAILS_LOG_TO_STDOUT: 'true'
       REDIS_URL: metadata-app-service-token-cache-redis
       SERVICE_TOKEN_CACHE_TTL: 999999
