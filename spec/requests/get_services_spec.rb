@@ -5,7 +5,8 @@ RSpec.describe 'GET /services' do
       :service,
       name: 'Service 1',
       created_by: 'greedo',
-      metadata: [build(:metadata, created_by: 'greedo')]
+      metadata: [build(:metadata, created_by: 'greedo')],
+      questionnaire: build(:questionnaire, :experiment)
     )
   end
   let!(:service_two) do
@@ -21,7 +22,8 @@ RSpec.describe 'GET /services' do
       :service,
       name: 'Ze Numero 3',
       created_by: 'greedo',
-      metadata: [build(:metadata, created_by: 'greedo')]
+      metadata: [build(:metadata, created_by: 'greedo')],
+      questionnaire: build(:questionnaire, :building)
     )
   end
 
@@ -44,15 +46,44 @@ RSpec.describe 'GET /services' do
         [
           {
             'service_name' => service_one.name,
-            'service_id' => service_one.id
+            'service_id' => service_one.id,
+            'questionnaire' => {
+              'id' => instance_of(String),
+              'service_id' => service_one.id,
+              'new_form_reason' => 'experiment',
+              'govuk_forms_ruled_out' => nil,
+              'required_moj_forms_features' => nil,
+              'govuk_forms_ruled_out_reason' => nil,
+              'continue_with_moj_forms' => nil,
+              'estimated_page_count' => nil,
+              'estimated_first_year_submissions_count' => nil,
+              'submission_delivery_method' => nil,
+              'created_at' => instance_of(String),
+              'updated_at' => instance_of(String)
+            }
           },
           {
             'service_name' => service_two.name,
-            'service_id' => service_two.id
+            'service_id' => service_two.id,
+            'questionnaire' => nil
           },
           {
             'service_name' => service_three.name,
-            'service_id' => service_three.id
+            'service_id' => service_three.id,
+            'questionnaire' => {
+              'id' => instance_of(String),
+              'service_id' => service_three.id,
+              'new_form_reason' => 'building',
+              'govuk_forms_ruled_out' => true,
+              'required_moj_forms_features' => %w[multiple_questions multiple_branches],
+              'govuk_forms_ruled_out_reason' => 'govuk forms ruled out reason text',
+              'continue_with_moj_forms' => nil,
+              'estimated_page_count' => 'under_20',
+              'estimated_first_year_submissions_count' => '10000_to_100000',
+              'submission_delivery_method' => 'email',
+              'created_at' => instance_of(String),
+              'updated_at' => instance_of(String)
+            }
           }
         ]
       )
@@ -83,7 +114,21 @@ RSpec.describe 'GET /services' do
           [
             {
               'service_name' => service_one.name,
-              'service_id' => service_one.id
+              'service_id' => service_one.id,
+              'questionnaire' => {
+                'id' => instance_of(String),
+                'service_id' => service_one.id,
+                'new_form_reason' => 'experiment',
+                'govuk_forms_ruled_out' => nil,
+                'required_moj_forms_features' => nil,
+                'govuk_forms_ruled_out_reason' => nil,
+                'continue_with_moj_forms' => nil,
+                'estimated_page_count' => nil,
+                'estimated_first_year_submissions_count' => nil,
+                'submission_delivery_method' => nil,
+                'created_at' => instance_of(String),
+                'updated_at' => instance_of(String)
+              }
             }
           ]
         )
@@ -106,7 +151,8 @@ RSpec.describe 'GET /services' do
           [
             {
               'service_name' => service_two.name,
-              'service_id' => service_two.id
+              'service_id' => service_two.id,
+              'questionnaire' => nil
             }
           ]
         )
@@ -135,7 +181,21 @@ RSpec.describe 'GET /services' do
         [
           {
             'service_name' => service_three.name,
-            'service_id' => service_three.id
+            'service_id' => service_three.id,
+            'questionnaire' => {
+              'id' => instance_of(String),
+              'service_id' => service_three.id,
+              'new_form_reason' => 'building',
+              'govuk_forms_ruled_out' => true,
+              'required_moj_forms_features' => %w[multiple_questions multiple_branches],
+              'govuk_forms_ruled_out_reason' => 'govuk forms ruled out reason text',
+              'continue_with_moj_forms' => nil,
+              'estimated_page_count' => 'under_20',
+              'estimated_first_year_submissions_count' => '10000_to_100000',
+              'submission_delivery_method' => 'email',
+              'created_at' => instance_of(String),
+              'updated_at' => instance_of(String)
+            }
           }
 
         ]

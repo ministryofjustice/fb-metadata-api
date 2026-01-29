@@ -21,7 +21,8 @@ RSpec.describe 'GET /services/users/:user_id' do
       :service,
       name: 'Service 3',
       created_by: 'greedo',
-      metadata: [build(:metadata, created_by: 'greedo')]
+      metadata: [build(:metadata, created_by: 'greedo')],
+      questionnaire: build(:questionnaire, :experiment)
     )
   end
 
@@ -43,11 +44,26 @@ RSpec.describe 'GET /services/users/:user_id' do
         [
           {
             'service_name' => service_one.name,
-            'service_id' => service_one.id
+            'service_id' => service_one.id,
+            'questionnaire' => nil
           },
           {
             'service_name' => service_three.name,
-            'service_id' => service_three.id
+            'service_id' => service_three.id,
+            'questionnaire' => {
+              'id' => instance_of(String),
+              'service_id' => service_three.id,
+              'new_form_reason' => 'experiment',
+              'govuk_forms_ruled_out' => nil,
+              'required_moj_forms_features' => nil,
+              'govuk_forms_ruled_out_reason' => nil,
+              'continue_with_moj_forms' => nil,
+              'estimated_page_count' => nil,
+              'estimated_first_year_submissions_count' => nil,
+              'submission_delivery_method' => nil,
+              'created_at' => instance_of(String),
+              'updated_at' => instance_of(String)
+            }
           }
         ]
       )
