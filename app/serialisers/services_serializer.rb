@@ -10,7 +10,8 @@ class ServicesSerializer
     all_services = services.map do |service|
       {
         service_id: service.id,
-        service_name: service.name
+        service_name: service.name,
+        questionnaire: service.questionnaire
       }
     end
     response = { services: all_services }

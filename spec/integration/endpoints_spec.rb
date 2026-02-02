@@ -450,14 +450,16 @@ RSpec.describe 'API integration tests' do
 
           {
             service_id: new_service[:service_id],
-            service_name: new_service[:service_name]
+            service_name: new_service[:service_name],
+            questionnaire: nil
           }
         end
         metadata_api_test_client.create_service(
           body: {
             "metadata": service.merge(
               "created_by": SecureRandom.uuid,
-              "service_name": 'Moff Gideon'
+              "service_name": 'Moff Gideon',
+              "questionnaire": nil
             )
           }.to_json,
           authorisation_headers:
