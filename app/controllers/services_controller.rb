@@ -2,8 +2,8 @@ class ServicesController < MetadataController
   SERVICE_EXISTS = 'Name has already been taken'.freeze
 
   def index
-    services = if name_query.present?
-                 Service.search(name_query).order(name: :asc)
+    services = if query.present?
+                 Service.search(query).order(name: :asc)
                else
                  Service.order(name: :asc)
                end
@@ -62,7 +62,7 @@ class ServicesController < MetadataController
     params[:per_page] || 20
   end
 
-  def name_query
-    params[:name_query] || ''
+  def query
+    params[:query] || ''
   end
 end

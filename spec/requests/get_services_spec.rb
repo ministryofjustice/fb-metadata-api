@@ -161,11 +161,11 @@ RSpec.describe 'GET /services' do
   end
 
   context 'when filtering by name' do
-    let(:name_query) { 'nume' }
+    let(:query) { 'nume' }
 
     before do
       allow_any_instance_of(Fb::Jwt::Auth).to receive(:verify!).and_return(true)
-      get "/services?name_query=#{name_query}", as: :json
+      get "/services?query=#{query}", as: :json
     end
 
     it 'returns success response' do
