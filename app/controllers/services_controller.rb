@@ -2,11 +2,11 @@ class ServicesController < MetadataController
   SERVICE_EXISTS = 'Name has already been taken'.freeze
 
   def index
-    services = Service.order(name: :asc)
-
-    if name_query.present?
-      services = services.where(Service.arel_table[:name].matches("%#{Service.sanitize_sql_like(name_query)}%"))
-    end
+    services = if query.present?
+                 Service.search(query).order(name: :asc)
+               else
+                 Service.order(name: :asc)
+               end
 
     total_services = services.count
     services = services.page(page).per(per_page)
@@ -62,7 +62,7 @@ class ServicesController < MetadataController
     params[:per_page] || 20
   end
 
-  def name_query
-    params[:name_query] || ''
+  def query
+    params[:query] || ''
   end
 end
