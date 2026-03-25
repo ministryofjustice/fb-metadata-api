@@ -18,19 +18,19 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'prometheus-client', '~> 4.2.1'
 gem 'puma', '~> 6.4'
 gem 'rack', '2.2.18'
-gem 'rails', '~> 7.2'
-gem 'sentry-rails', '~> 5.14'
+gem 'rails', '~> 8.1', '>= 8.1.2.1'
+gem 'sentry-rails', '~> 5.20', '>= 5.20.0'
 gem 'sentry-ruby', '~> 5.14'
 gem 'tzinfo-data'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'database_cleaner-active_record'
-  gem 'factory_bot_rails'
+  gem 'database_cleaner-active_record', '>= 2.2.1'
+  gem 'factory_bot_rails', '>= 6.4.4'
   gem 'httparty'
   gem 'rspec_junit_formatter'
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  gem 'rspec-rails', '>= 7.0.2'
+  gem 'shoulda-matchers', '>= 7.0.1'
   gem 'simplecov'
   gem 'simplecov-console', require: false
 end
@@ -38,7 +38,7 @@ end
 group :development do
   gem 'brakeman'
   gem 'rubocop'
-  gem 'rubocop-govuk'
+  gem 'rubocop-govuk', '>= 5.0.3'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.1.0'
 end
