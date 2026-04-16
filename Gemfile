@@ -5,11 +5,11 @@ ruby '3.2.0'
 
 # Metadata presenter - if you need to be on development you can uncomment
 # one of these lines:
-# gem 'metadata_presenter',
-#     github: 'ministryofjustice/fb-metadata-presenter',
-#     branch: 'bump-json-schema'
+gem 'metadata_presenter',
+    github: 'ministryofjustice/fb-metadata-presenter',
+    branch: 'CDPTKAN-924-moj-forms-software-updates-fb-metadata-presenter'
 # gem 'metadata_presenter', path: '../fb-metadata-presenter'
-gem 'metadata_presenter', '3.4.12'
+#gem 'metadata_presenter', '3.4.12'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fb-jwt-auth', '~> 0.10.0'
@@ -17,10 +17,10 @@ gem 'kaminari'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'prometheus-client', '~> 4.2.1'
 gem 'puma', '~> 6.4'
-gem 'rack', '2.2.18'
+gem 'rack', '3.1.21'
 gem 'rails', '~> 7.2'
-gem 'sentry-rails', '~> 5.14'
-gem 'sentry-ruby', '~> 5.14'
+gem 'sentry-rails', '~> 5.20'
+gem 'sentry-ruby', '~> 5.20'
 gem 'tzinfo-data'
 
 group :development, :test do
