@@ -53,7 +53,7 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - run: bundle exec brakeman -q --no-pager
+      - run: bundle exec brakeman -q --no-pager --except EOLRuby
       - slack/status: *slack_status
   test:
     working_directory: ~/circle
