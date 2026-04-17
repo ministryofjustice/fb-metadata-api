@@ -15,6 +15,7 @@ class ComponentItemsSerialiser
   end
 
   private
+
   def all_items
     items.each_with_object({}) do |item, hash|
       hash[item.component_id] = item.data
