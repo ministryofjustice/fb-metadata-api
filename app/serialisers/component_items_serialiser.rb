@@ -13,10 +13,11 @@ class ComponentItemsSerialiser
       items: all_items
     }
   end
-end
 
-def all_items
-  items.each_with_object({}) do |item, hash|
-    hash[item.component_id] = item.data
+  private
+  def all_items
+    items.each_with_object({}) do |item, hash|
+      hash[item.component_id] = item.data
+    end
   end
 end
