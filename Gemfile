@@ -7,7 +7,7 @@ ruby '3.2.0'
 # one of these lines:
 # gem 'metadata_presenter',
 #     github: 'ministryofjustice/fb-metadata-presenter',
-#     branch: 'CDPTKAN-924-moj-forms-software-updates-fb-metadata-presenter'
+#     branch: 'bump-json-schema'
 # gem 'metadata_presenter', path: '../fb-metadata-presenter'
 gem 'metadata_presenter', '3.4.13'
 
