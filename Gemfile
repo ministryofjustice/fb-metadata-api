@@ -26,10 +26,10 @@ gem 'tzinfo-data'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner-active_record'
-  gem 'factory_bot_rails'
-  gem 'httparty'
+  gem 'factory_bot_rails', '~> 6.5'
+  gem 'httparty', '~> 0.24.0'
   gem 'rspec_junit_formatter'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 8.0.4'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'simplecov-console', require: false
@@ -38,7 +38,7 @@ end
 group :development do
   gem 'brakeman'
   gem 'rubocop'
-  gem 'rubocop-govuk'
+  gem 'rubocop-govuk', '~> 5.2.1'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.1.0'
 end
