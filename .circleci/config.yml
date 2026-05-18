@@ -8,7 +8,7 @@ orbs:
 jobs:
   login-to-aws:
     docker: &docker_image
-      - image: 'cimg/ruby:3.2.0-node'
+      - image: 'cimg/ruby:3.3-node'
     steps:
       - checkout
       - aws-cli/setup:
@@ -27,8 +27,9 @@ jobs:
             - bash.env
 
   build:
-    docker:
-      - image: 'cimg/ruby:3.2.0'
+    docker: &ruby_image
+      - image: 'cimg/ruby:3.3'
+    resource_class: medium+ # Increased
     steps:
       - checkout
       - ruby/install-deps
@@ -38,8 +39,8 @@ jobs:
           failure_message: ":facepalm:  Failed job $CIRCLE_JOB  :homer-disappear:"
           include_job_number_field: false
   lint:
-    docker:
-      - image: 'cimg/ruby:3.2.0'
+    docker: *ruby_image
+    resource_class: medium+ # Increased
     steps:
       - checkout
       - ruby/install-deps
@@ -48,8 +49,8 @@ jobs:
           label: running rubocop
       - slack/status: *slack_status
   security:
-    docker:
-      - image: 'cimg/ruby:3.2.0'
+    docker: *ruby_image
+    resource_class: medium+ # Increased
     steps:
       - checkout
       - ruby/install-deps
