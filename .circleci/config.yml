@@ -147,7 +147,7 @@ jobs:
           include_job_number_field: false
   editor_acceptance_tests_eks:
     docker:
-      - image: cimg/ruby:3.2.0
+      - image: cimg/ruby:3.3.11
       - environment:
           POSTGRES_DB: editor_local
           POSTGRES_PASSWORD: password
