@@ -228,10 +228,14 @@ workflows:
           context: *context
           requires:
             - build_and_push_image
-      - deploy_to_live_eks:
+      - editor_acceptance_tests_eks:
           context: *context
           requires:
             - deploy_to_test_eks
+      - deploy_to_live_eks:
+          context: *context
+          requires:
+            - editor_acceptance_tests_eks
           filters:
             branches:
               only:
