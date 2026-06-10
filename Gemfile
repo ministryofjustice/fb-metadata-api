@@ -9,7 +9,7 @@ ruby File.read('.ruby-version').strip
 #     github: 'ministryofjustice/fb-metadata-presenter',
 #     branch: 'bump-json-schema'
 # gem 'metadata_presenter', path: '../fb-metadata-presenter'
-gem 'metadata_presenter', '3.4.14'
+gem 'metadata_presenter', '3.4.15'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fb-jwt-auth', '~> 0.10.0'
@@ -18,7 +18,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'prometheus-client', '~> 4.2.1'
 gem 'puma', '~> 6.4'
 gem 'rack', '~> 3.2.6'
-gem 'rails', '~> 7.2'
+gem 'rails', '~> 8.1.3'
 gem 'sentry-rails', '~> 5.20'
 gem 'sentry-ruby', '~> 5.20'
 gem 'tzinfo-data'
