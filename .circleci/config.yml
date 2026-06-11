@@ -8,7 +8,7 @@ orbs:
 jobs:
   login-to-aws:
     docker: &docker_image
-      - image: 'cimg/ruby:3.3-node'
+      - image: "cimg/ruby:3.3-node"
     steps:
       - checkout
       - aws-cli/setup:
@@ -28,7 +28,7 @@ jobs:
 
   build:
     docker: &ruby_image
-      - image: 'cimg/ruby:3.3'
+      - image: "cimg/ruby:3.3"
     resource_class: medium+ # Increased
     steps:
       - checkout
@@ -96,12 +96,12 @@ jobs:
             echo "export SSH_FILE_FOR_SECRETS=~/.ssh/id_rsa_d8c6c158ff1732a896f283a6e7e7e838" >> $BASH_ENV
       - run: &deploy_scripts
           name: cloning deploy scripts
-          command: 'git clone git@github.com:ministryofjustice/fb-deploy.git deploy-scripts'
+          command: "git clone git@github.com:ministryofjustice/fb-deploy.git deploy-scripts"
       - run:
           name: build and push docker images
           environment:
             ENVIRONMENT_NAME: test
-          command: './deploy-scripts/bin/build'
+          command: "./deploy-scripts/bin/build"
   deploy_to_test_eks:
     working_directory: ~/circle/git/fb-metadata-api
     docker: *ecr_image
@@ -122,7 +122,7 @@ jobs:
             APPLICATION_NAME: fb-metadata-api
             PLATFORM_ENV: test
             K8S_NAMESPACE: formbuilder-saas-test
-          command: './deploy-scripts/bin/deploy-eks'
+          command: "./deploy-scripts/bin/deploy-eks"
       - slack/status: *slack_status
   deploy_to_live_eks:
     working_directory: ~/circle/git/fb-metadata-api
@@ -139,7 +139,7 @@ jobs:
             APPLICATION_NAME: fb-metadata-api
             PLATFORM_ENV: live
             K8S_NAMESPACE: formbuilder-saas-live
-          command: './deploy-scripts/bin/deploy-eks'
+          command: "./deploy-scripts/bin/deploy-eks"
       - slack/status:
           only_for_branches: main
           success_message: ":rocket:  Successfully deployed to Live (eks)  :guitar:"
@@ -152,11 +152,11 @@ jobs:
           POSTGRES_DB: editor_local
           POSTGRES_PASSWORD: password
           POSTGRES_USER: postgres
-        image: 'cimg/postgres:12.9'
+        image: "cimg/postgres:12.9"
     resource_class: large
     environment:
-      BUNDLE_JOBS: '3'
-      BUNDLE_RETRY: '3'
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
       PGPASSWORD: password
       PGUSER: postgres
@@ -223,7 +223,7 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - add-gate-run-only-this-branch
       - deploy_to_test_eks:
           context: *context
           requires:
@@ -232,10 +232,20 @@ workflows:
           context: *context
           requires:
             - deploy_to_test_eks
+      - production_deploy_approval:
+          type: approval
+          requires:
+            - editor_acceptance_tests_eks
+            - deploy_to_test_eks
+          filters:
+            branches:
+              only:
+                - main
       - deploy_to_live_eks:
           context: *context
           requires:
             - editor_acceptance_tests_eks
+            - production_deploy_approval
           filters:
             branches:
               only:
