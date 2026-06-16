@@ -214,7 +214,7 @@ workflows:
           requires:
             - build
       - test:
-        - requires:
+          requires:
             - build
       - build_and_push_image:
           context: *context
