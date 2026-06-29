@@ -32,15 +32,15 @@ RUN bundle install --no-cache ${BUNDLE_ARGS}
 
 COPY --chown=appuser:appgroup . .
 
-ENV APP_PORT 3000
+ENV APP_PORT=3000
 EXPOSE $APP_PORT
 
 USER ${UID}
 
 # Govuk Publishing Components gem requires these env vars to be set, however we
 # do not actually need to use them.
-ENV GOVUK_APP_DOMAIN ''
-ENV GOVUK_WEBSITE_ROOT ''
+ENV GOVUK_APP_DOMAIN=''
+ENV GOVUK_WEBSITE_ROOT=''
 
 ARG RAILS_ENV=production
-CMD bundle exec rake db:migrate:ignore_concurrent && bundle exec rails s -e ${RAILS_ENV} -p ${APP_PORT} --binding=0.0.0.0
+CMD ["sh", "-c", "bundle exec rake db:migrate:ignore_concurrent && bundle exec rails s -e ${RAILS_ENV} -p ${APP_PORT} --binding=0.0.0.0"]
