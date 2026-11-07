@@ -29,7 +29,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.5'
   gem 'httparty', '~> 0.24.0'
   gem 'rspec_junit_formatter'
-  gem 'rspec-rails', '~> 8.0.4'
+  gem 'rspec-rails', '~> 8.0.5'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'simplecov-console', require: false
