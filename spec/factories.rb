@@ -39,7 +39,7 @@ FactoryBot.define do
 
   factory :items do
     created_by { 'Fay' }
-    service_id { SecureRandom.uuid }
+    service
     component_id { SecureRandom.uuid }
     data do
       [

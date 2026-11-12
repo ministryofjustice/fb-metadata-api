@@ -14,7 +14,8 @@ RSpec.describe 'GET /services' do
       :service,
       name: 'Service 2',
       created_by: 'han',
-      metadata: [build(:metadata, created_by: 'han')]
+      metadata: [build(:metadata, created_by: 'han')],
+      items: build_list(:items, 2)
     )
   end
   let!(:service_three) do
@@ -200,6 +201,62 @@ RSpec.describe 'GET /services' do
 
         ]
       )
+    end
+  end
+
+  context 'when including association' do
+    let(:include) { 'metadata' }
+    let(:page) { 1 }
+    let(:per_page) { 100 }
+
+    before do
+      allow_any_instance_of(Fb::Jwt::Auth).to receive(:verify!).and_return(true)
+      get "/services?include=#{include}&page=#{page}&per_page=#{per_page}", as: :json
+    end
+
+    it 'returns success response' do
+      expect(response.status).to eq(200)
+    end
+
+    it 'returns the total services' do
+      expect(response_body['total_services']).to be(3)
+    end
+
+    it 'returns services with items and metadata' do
+      services = response_body['services']
+      expect(services).to match_array(
+        [
+          {
+            'service_name' => service_one.name,
+            'service_id' => service_one.id,
+            'items' => [],
+            'metadata' => instance_of(Array)
+          },
+          {
+            'service_name' => service_two.name,
+            'service_id' => service_two.id,
+            'items' => instance_of(Array),
+            'metadata' => [
+              {
+                'id' => instance_of(String),
+                'data' => instance_of(Hash),
+                'created_by' => 'han',
+                'locale' => 'en',
+                'service_id' => service_two.id,
+                'created_at' => instance_of(String),
+                'updated_at' => instance_of(String)
+              }
+            ]
+          },
+          {
+            'service_name' => service_three.name,
+            'service_id' => service_three.id,
+            'items' => [],
+            'metadata' => instance_of(Array)
+          }
+        ]
+      )
+      expect(services[1]['items'].count).to be(2)
     end
   end
 end
