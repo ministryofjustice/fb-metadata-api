@@ -2,16 +2,10 @@ class ServicesController < MetadataController
   SERVICE_EXISTS = 'Name has already been taken'.freeze
 
   def index
-    services = if query.present?
-                 Service.search(query).order(name: :asc)
-               else
-                 Service.order(name: :asc)
-               end
+    all_services = scoped_services.order(name: :asc)
+    services = all_services.page(page).per(per_page)
 
-    total_services = services.count
-    services = services.page(page).per(per_page)
-
-    render json: ServicesSerializer.new(services, total_services:).attributes
+    render json: serializer_class.new(services, total_services: all_services.count).attributes
   end
 
   def create
@@ -54,6 +48,18 @@ class ServicesController < MetadataController
 
   private
 
+  def scoped_services
+    if query.present?
+      Service.search(query)
+    elsif includes.present?
+      Service.includes(*includes.map(&:to_sym))
+    else
+      Service.includes(:questionnaire)
+    end
+  end
+
+  ALLOWED_INCLUDES = %w[metadata].freeze
+
   def page
     params[:page] || 1
   end
@@ -64,5 +70,13 @@ class ServicesController < MetadataController
 
   def query
     params[:query] || ''
+  end
+
+  def includes
+    params[:include].to_s.split(',') & ALLOWED_INCLUDES
+  end
+
+  def serializer_class
+    includes.present? ? DetailedServicesSerializer : ServicesSerializer
   end
 end
