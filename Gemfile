@@ -11,7 +11,7 @@ ruby file: '.ruby-version'
 # gem 'metadata_presenter', path: '../fb-metadata-presenter'
 gem 'metadata_presenter', '3.4.27'
 
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '>= 1.25.0', require: false
 gem 'fb-jwt-auth', '~> 0.10.0'
 gem 'kaminari'
 gem 'pg', '>= 0.18', '< 2.0'
