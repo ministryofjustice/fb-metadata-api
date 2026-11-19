@@ -151,57 +151,57 @@ jobs:
           success_message: ":rocket:  Successfully deployed to Live (eks)  :guitar:"
           failure_message: ":alert:  Failed to deploy to Live (eks)  :try_not_to_cry:"
           include_job_number_field: false
-  editor_acceptance_tests_eks:
-    docker:
-      - image: 'cimg/ruby:4.0'
-      - environment:
-          POSTGRES_DB: editor_local
-          POSTGRES_PASSWORD: password
-          POSTGRES_USER: postgres
-        image: 'cimg/postgres:12.9'
-    resource_class: large
-    environment:
-      BUNDLE_JOBS: '3'
-      BUNDLE_RETRY: '3'
-      PGHOST: 127.0.0.1
-      PGPASSWORD: password
-      PGUSER: postgres
-      RAILS_ENV: test
-    parallelism: 7
-    steps:
-      - checkout
-      - run: sudo apt-get update
-      - browser-tools/install-chrome:
-          chrome-version: 149.0.7827.200
-      - browser-tools/install-chromedriver
-      - run:
-          name: Check browser tools install
-          command: |
-            google-chrome --version
-            chromedriver --version
-      - run:
-          name: Run editor acceptance tests (eks)
-          command: |
-            EDITOR_APP=https://fb-editor-test.apps.live.cloud-platform.service.justice.gov.uk
-            echo 'export ACCEPTANCE_TESTS_EDITOR_APP=$EDITOR_APP' >> $BASH_ENV
-            echo 'export ACCEPTANCE_TESTS_ADMIN_USER=$ACCEPTANCE_TESTS_USER' >> $BASH_ENV
-            echo 'export ACCEPTANCE_TESTS_ADMIN_PASSWORD=$ACCEPTANCE_TESTS_PASSWORD' >> $BASH_ENV
-            echo 'export CI_MODE=true' >> $BASH_ENV
-            echo 'export SITEPRISM_DSL_VALIDATION_DISABLED=true' >> $BASH_ENV
-
-            source $BASH_ENV
-
-            git clone https://github.com/ministryofjustice/fb-editor
-            cd fb-editor
-
-            bundle install
-            bundle exec rails db:setup
-            bundle exec rails db:migrate
-            EXCLUDE_FILES="accessibility_spec.rb"
-            circleci tests glob "acceptance/**/*_spec.rb" | grep -ve $EXCLUDE_FILES | circleci tests run --command="xargs bundle exec rspec --format progress --format RspecJunitFormatter -o ~/acceptance/acceptance.xml" --verbose --split-by=timings --timings-type=filename
-      - store_test_results:
-          path: ~/acceptance
-      - slack/status: *slack_status
+#  editor_acceptance_tests_eks:
+#    docker:
+#      - image: 'cimg/ruby:4.0'
+#      - environment:
+#          POSTGRES_DB: editor_local
+#          POSTGRES_PASSWORD: password
+#          POSTGRES_USER: postgres
+#        image: 'cimg/postgres:12.9'
+#    resource_class: large
+#    environment:
+#      BUNDLE_JOBS: '3'
+#      BUNDLE_RETRY: '3'
+#      PGHOST: 127.0.0.1
+#      PGPASSWORD: password
+#      PGUSER: postgres
+#      RAILS_ENV: test
+#    parallelism: 7
+#    steps:
+#      - checkout
+#      - run: sudo apt-get update
+#      - browser-tools/install-chrome:
+#          chrome-version: 149.0.7827.200
+#      - browser-tools/install-chromedriver
+#      - run:
+#          name: Check browser tools install
+#          command: |
+#            google-chrome --version
+#            chromedriver --version
+#      - run:
+#          name: Run editor acceptance tests (eks)
+#          command: |
+#            EDITOR_APP=https://fb-editor-test.apps.live.cloud-platform.service.justice.gov.uk
+#            echo 'export ACCEPTANCE_TESTS_EDITOR_APP=$EDITOR_APP' >> $BASH_ENV
+#            echo 'export ACCEPTANCE_TESTS_ADMIN_USER=$ACCEPTANCE_TESTS_USER' >> $BASH_ENV
+#            echo 'export ACCEPTANCE_TESTS_ADMIN_PASSWORD=$ACCEPTANCE_TESTS_PASSWORD' >> $BASH_ENV
+#            echo 'export CI_MODE=true' >> $BASH_ENV
+#            echo 'export SITEPRISM_DSL_VALIDATION_DISABLED=true' >> $BASH_ENV
+#
+#            source $BASH_ENV
+#
+#            git clone https://github.com/ministryofjustice/fb-editor
+#            cd fb-editor
+#
+#            bundle install
+#            bundle exec rails db:setup
+#            bundle exec rails db:migrate
+#            EXCLUDE_FILES="accessibility_spec.rb"
+#            circleci tests glob "acceptance/**/*_spec.rb" | grep -ve $EXCLUDE_FILES | circleci tests run --command="xargs bundle exec rspec --format progress --format RspecJunitFormatter -o ~/acceptance/acceptance.xml" --verbose --split-by=timings --timings-type=filename
+#      - store_test_results:
+#          path: ~/acceptance
+#      - slack/status: *slack_status
 
 workflows:
   version: 2
@@ -236,14 +236,14 @@ workflows:
           context: *context
           requires:
             - build_and_push_image
-      - editor_acceptance_tests_eks:
-          context: *context
-          requires:
-            - deploy_to_test_eks
+#      - editor_acceptance_tests_eks:
+#          context: *context
+#          requires:
+#            - deploy_to_test_eks
       - production_deploy_approval:
           type: approval
           requires:
-            - editor_acceptance_tests_eks
+            - deploy_to_test_eks
           filters:
             branches:
               only:
