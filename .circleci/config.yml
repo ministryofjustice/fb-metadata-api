@@ -3,7 +3,7 @@ version: 2.1
 parameters:
   ruby-version:
     type: string
-    default: "4.0.9"
+    default: "4.0.10"
 
 orbs:
   ruby: circleci/ruby@1.4.0
@@ -14,7 +14,7 @@ orbs:
 jobs:
   login-to-aws:
     docker: &docker_image
-      - image: 'cimg/ruby:<< pipeline.parameters.ruby-version >>-node'
+      - image: 'cimg/ruby:4.0-node'
     steps:
       - checkout
       - aws-cli/setup:
@@ -34,7 +34,7 @@ jobs:
 
   build:
     docker: &ruby_image
-      - image: 'cimg/ruby:<< pipeline.parameters.ruby-version >>'
+      - image: 'cimg/ruby:4.0'
     resource_class: medium+ # Increased
     steps:
       - checkout
@@ -65,7 +65,7 @@ jobs:
   test:
     working_directory: ~/circle
     docker:
-      - image: cimg/ruby:<< pipeline.parameters.ruby-version >>
+      - image: 'cimg/ruby:4.0'
     steps:
       - checkout
       - setup_remote_docker: &remote_docker
@@ -153,7 +153,7 @@ jobs:
           include_job_number_field: false
   editor_acceptance_tests_eks:
     docker:
-      - image: cimg/ruby:<< pipeline.parameters.ruby-version >>
+      - image: 'cimg/ruby:4.0'
       - environment:
           POSTGRES_DB: editor_local
           POSTGRES_PASSWORD: password
