@@ -34,7 +34,7 @@ jobs:
 
   build:
     docker: &ruby_image
-      - image: 'cimg/ruby:4.0-node'
+      - image: 'cimg/ruby:4.0'
     resource_class: medium+ # Increased
     steps:
       - checkout
@@ -65,7 +65,7 @@ jobs:
   test:
     working_directory: ~/circle
     docker:
-      - image: 'cimg/ruby:4.0-node'
+      - image: 'cimg/ruby:4.0'
     steps:
       - checkout
       - setup_remote_docker: &remote_docker
@@ -153,7 +153,7 @@ jobs:
           include_job_number_field: false
   editor_acceptance_tests_eks:
     docker:
-      - image: 'cimg/ruby:4.0-node'
+      - image: 'cimg/ruby:4.0'
       - environment:
           POSTGRES_DB: editor_local
           POSTGRES_PASSWORD: password
