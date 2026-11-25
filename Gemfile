@@ -9,7 +9,7 @@ ruby file: '.ruby-version'
 #     github: 'ministryofjustice/fb-metadata-presenter',
 #     branch: 'bump-json-schema'
 # gem 'metadata_presenter', path: '../fb-metadata-presenter'
-gem 'metadata_presenter', '3.4.27'
+gem 'metadata_presenter', '3.4.30'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'fb-jwt-auth', '~> 0.10.0'
@@ -18,8 +18,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'prometheus-client', '~> 4.2.1'
 gem 'puma', '~> 7.2'
 gem 'rack', '~> 3.2.6'
-gem 'rails', '~> 8.1.3'
-gem 'sentry-rails', '~> 6.0'
+gem 'rails', '~> 8.1.4', '>= 8.1.4.1'
+gem 'sentry-rails', '~> 7.0', '>= 7.0.0'
 gem 'sentry-ruby', '~> 6.0'
 gem 'tzinfo-data'
 
@@ -29,7 +29,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.5'
   gem 'httparty', '~> 0.24.0'
   gem 'rspec_junit_formatter'
-  gem 'rspec-rails', '~> 8.0.5'
+  gem 'rspec-rails', '~> 8.1.0'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'simplecov-console', require: false
@@ -38,7 +38,7 @@ end
 group :development do
   gem 'brakeman'
   gem 'rubocop'
-  gem 'rubocop-govuk', '~> 5.2.1'
+  gem 'rubocop-govuk', '~> 6.0.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.1.0'
 end
